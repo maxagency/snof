@@ -1,0 +1,24 @@
+ion-label{
+	color: #2D2F89 !important;
+	font-size: 16px !important;
+	font-weight: bold !important;
+	line-height: 19px !important;
+	text-transform: uppercase;
+}
+
+ion-select, ion-datetime, ion-textarea, ion-select, ion-searchbar{
+	
+	color: #1D1D1E;
+	font-size: 18px;
+	line-height: 25px;
+
+	border-bottom: 1px #2D2F89 solid;
+
+}
+
+.form-input-margin{
+
+	ion-select, ion-datetime, ion-textarea, ion-select, ion-searchbar{
+		margin-bottom: 48px;
+	}
+}

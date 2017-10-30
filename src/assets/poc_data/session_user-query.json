@@ -1,0 +1,187 @@
+[
+  {
+    "id": "session-1a:athlete-1",
+    "session_id": "session-1a",
+    "user_id": "athlete-1",
+    "user_drills": ["user_drill-1"],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-1a:athlete-2",
+    "session_id": "session-1a",
+    "user_id": "athlete-2",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-1a:athlete-3",
+    "session_id": "session-1a",
+    "user_id": "athlete-3",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  
+  {
+    "id": "session-1b:athlete-1",
+    "session_id": "session-1b",
+    "user_id": "athlete-1",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-1b:athlete-2",
+    "session_id": "session-1b",
+    "user_id": "athlete-2",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-1b:athlete-3",
+    "session_id": "session-1b",
+    "user_id": "athlete-3",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  
+  {
+    "id": "session-1c:athlete-1",
+    "session_id": "session-1c",
+    "user_id": "athlete-1",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-1c:athlete-2",
+    "session_id": "session-1c",
+    "user_id": "athlete-2",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-1c:athlete-3",
+    "session_id": "session-1c",
+    "user_id": "athlete-3",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  
+  {
+    "id": "session-2a:athlete-1",
+    "session_id": "session-2a",
+    "user_id": "athlete-1",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-2a:athlete-2",
+    "session_id": "session-2a",
+    "user_id": "athlete-2",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-2a:athlete-3",
+    "session_id": "session-2a",
+    "user_id": "athlete-3",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  
+  {
+    "id": "session-2b:athlete-1",
+    "session_id": "session-2b",
+    "user_id": "athlete-1",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-2b:athlete-2",
+    "session_id": "session-2b",
+    "user_id": "athlete-2",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-2b:athlete-3",
+    "session_id": "session-2b",
+    "user_id": "athlete-3",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  
+  {
+    "id": "session-3a:athlete-1",
+    "session_id": "session-3a",
+    "user_id": "athlete-1",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-3a:athlete-2",
+    "session_id": "session-3a",
+    "user_id": "athlete-2",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  },
+  {
+    "id": "session-3a:athlete-3",
+    "session_id": "session-3a",
+    "user_id": "athlete-3",
+    "user_drills": [],
+    "isAbsent": false,
+    "absentReason": null,
+    "isEnded": false,
+    "overallComment": null
+  }
+]

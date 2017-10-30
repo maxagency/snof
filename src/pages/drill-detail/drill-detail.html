@@ -1,0 +1,303 @@
+<ion-header>
+  <ion-navbar color="dark" class="snf-nav">
+    <ion-title class="snf-title">{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button clear class="save-drill-button" (click)="doSave()">Save </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="!isReady" class="loading-spinner dark"><ion-spinner name="crescent"></ion-spinner></div>
+  <div *ngIf="isReady">
+      
+    <!-- TOP SECTION -->
+    <ion-grid class="user-block" *ngIf="isReady">
+      <ion-row>
+        <ion-col col-4 class="video-cell">
+          <!--img src="https://i.imgur.com/VrQfFcO.gif" /-->
+          <div class="video-section">
+            <video id="video-player-small" *ngIf="isVideoLoaded" [src]="videoSrc" controls="controls" controls playsinline></video>
+            <span *ngIf="!isVideoLoaded" class="white-text">No Video Loaded</span>
+          </div>
+
+        </ion-col>
+        <ion-col col-8 class="black-div">
+          <h1 class="drill-person">{{currStudent.firstName}} {{currStudent.lastName}}</h1>
+          <h5 class="drill-name">{{drillName}}</h5>
+          <button ion-button clear icon-right color="danger" class="drill-ref-button" (click)="goToDrillDetailReference()">
+            <span class="drill-ref-button-text">VIEW DRILL REFERENCE</span>
+             <ion-icon name="arrow-round-forward"></ion-icon>
+          </button>
+          <div class="thumbnail-left"><img class="thumbnail large" [src]="currStudent.thumbBase64"/></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+    <!-- TECHNIQUE -->
+    <ion-card>
+      <ion-card-header class="purple-heading">Technique</ion-card-header>
+      <div class="large-divider"></div>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row class="select-cell-row">
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(1)" [ngClass]="{'active-yellow' : (isActive('technique', 1)), 'inactive' : (!isActive('technique', 1)), 'bolded' : (isBolded('technique', 1))}">
+                <span>01</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(2)" [ngClass]="{'active-yellow' : (isActive('technique', 2)), 'inactive' : (!isActive('technique', 2)), 'bolded' : (isBolded('technique', 2))}">
+                <span>02</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(3)" [ngClass]="{'active-yellow' : (isActive('technique', 3)), 'inactive' : (!isActive('technique', 3)), 'bolded' : (isBolded('technique', 3))}">
+                <span>03</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(4)" [ngClass]="{'active-yellow' : (isActive('technique', 4)), 'inactive' : (!isActive('technique', 4)), 'bolded' : (isBolded('technique', 4))}">
+                <span>04</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(5)" [ngClass]="{'active-yellow' : (isActive('technique', 5)), 'inactive' : (!isActive('technique', 5)), 'bolded' : (isBolded('technique', 5))}">
+                <span>05</span>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="select-cell-row">
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(6)" [ngClass]="{'active-yellow' : (isActive('technique', 6)), 'inactive' : (!isActive('technique', 6)), 'bolded' : (isBolded('technique', 6))}">
+                <span>06</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(7)" [ngClass]="{'active-yellow' : (isActive('technique', 7)), 'inactive' : (!isActive('technique', 7)), 'bolded' : (isBolded('technique', 7))}">
+                <span>07</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(8)" [ngClass]="{'active-yellow' : (isActive('technique', 8)), 'inactive' : (!isActive('technique', 8)), 'bolded' : (isBolded('technique', 8))}">
+                <span>08</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(9)" [ngClass]="{'active-yellow' : (isActive('technique', 9)), 'inactive' : (!isActive('technique', 9)), 'bolded' : (isBolded('technique', 9))}">
+                <span>09</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setTechniqueScore(10)" [ngClass]="{'active-yellow' : (isActive('technique', 10)), 'inactive' : (!isActive('technique', 10)), 'bolded' : (isBolded('technique', 10))}">
+                <span>10</span>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 class="select-cell">
+              <div (click)="setTechniqueScore(0)" [ngClass]="{'active-yellow' : (isActive('technique', 0)), 'inactive' : (!isActive('technique', 0)), 'bolded' : (isBolded('technique', 0))}">
+                <span>N/A</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- RUBRICS -->
+    <ion-card>
+      <ion-card-header class="purple-heading">Movement</ion-card-header>
+      <div class="large-divider"></div>
+
+      <ion-card-content>
+
+        <h2 class="black-subheading">Balance</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="select-cell">
+              <div (click)="setBalanceScore(0)" [ngClass]="{'active-burnt-orange' : (isActive('balance', 0)), 'inactive' : (!isActive('balance', 0)), 'bolded' : (isBolded('balance', 0))}">
+                <span>N/A</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setBalanceScore(1)" [ngClass]="{'active-burnt-orange' : (isActive('balance', 1)), 'inactive' : (!isActive('balance', 1)), 'bolded' : (isBolded('balance', 1))}">
+                <span>01</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setBalanceScore(2)" [ngClass]="{'active-burnt-orange' : (isActive('balance', 2)), 'inactive' : (!isActive('balance', 2)), 'bolded' : (isBolded('balance', 2))}">
+                <span>02</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setBalanceScore(3)" [ngClass]="{'active-burnt-orange' : (isActive('balance', 3)), 'inactive' : (!isActive('balance', 3)), 'bolded' : (isBolded('balance', 3))}">
+                <span>03</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setBalanceScore(4)" [ngClass]="{'active-burnt-orange' : (isActive('balance', 4)), 'inactive' : (!isActive('balance', 4)), 'bolded' : (isBolded('balance', 4))}">
+                <span>04</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <h2 class="black-subheading">Rotary</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="select-cell">
+              <div (click)="setRotaryScore(0)" [ngClass]="{'active-steel-blue' : (isActive('rotary', 0)), 'inactive' : (!isActive('rotary', 0)), 'bolded' : (isBolded('rotary', 0))}">
+                <span>N/A</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setRotaryScore(1)" [ngClass]="{'active-steel-blue' : (isActive('rotary', 1)), 'inactive' : (!isActive('rotary', 1)), 'bolded' : (isBolded('rotary', 1))}">
+                <span>01</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setRotaryScore(2)" [ngClass]="{'active-steel-blue' : (isActive('rotary', 2)), 'inactive' : (!isActive('rotary', 2)), 'bolded' : (isBolded('rotary', 2))}">
+                <span>02</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setRotaryScore(3)" [ngClass]="{'active-steel-blue' : (isActive('rotary', 3)), 'inactive' : (!isActive('rotary', 3)), 'bolded' : (isBolded('rotary', 3))}">
+                <span>03</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setRotaryScore(4)" [ngClass]="{'active-steel-blue' : (isActive('rotary', 4)), 'inactive' : (!isActive('rotary', 4)), 'bolded' : (isBolded('rotary', 4))}">
+                <span>04</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <h2 class="black-subheading">Edging</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="select-cell">
+              <div (click)="setEdgingScore(0)" [ngClass]="{'active-white' : (isActive('edging', 0)), 'inactive' : (!isActive('edging', 0)), 'bolded' : (isBolded('edging', 0))}">
+                <span>N/A</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setEdgingScore(1)" [ngClass]="{'active-white' : (isActive('edging', 1)), 'inactive' : (!isActive('edging', 1)), 'bolded' : (isBolded('edging', 1))}">
+                <span>01</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setEdgingScore(2)" [ngClass]="{'active-white' : (isActive('edging', 2)), 'inactive' : (!isActive('edging', 2)), 'bolded' : (isBolded('edging', 2))}">
+                <span>02</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setEdgingScore(3)" [ngClass]="{'active-white' : (isActive('edging', 3)), 'inactive' : (!isActive('edging', 3)), 'bolded' : (isBolded('edging', 3))}">
+                <span>03</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setEdgingScore(4)" [ngClass]="{'active-white' : (isActive('edging', 4)), 'inactive' : (!isActive('edging', 4)), 'bolded' : (isBolded('edging', 4))}">
+                <span>04</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <h2 class="black-subheading">Pressure</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="select-cell">
+              <div (click)="setPressureControlScore(0)" [ngClass]="{'active-yellow' : (isActive('pressure', 0)), 'inactive' : (!isActive('pressure', 0)), 'bolded' : (isBolded('pressure', 0))}">
+                <span>N/A</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setPressureControlScore(1)" [ngClass]="{'active-yellow' : (isActive('pressure', 1)), 'inactive' : (!isActive('pressure', 1)), 'bolded' : (isBolded('pressure', 1))}">
+                <span>01</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setPressureControlScore(2)" [ngClass]="{'active-yellow' : (isActive('pressure', 2)), 'inactive' : (!isActive('pressure', 2)), 'bolded' : (isBolded('pressure', 2))}">
+                <span>02</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setPressureControlScore(3)" [ngClass]="{'active-yellow' : (isActive('pressure', 3)), 'inactive' : (!isActive('pressure', 3)), 'bolded' : (isBolded('pressure', 3))}">
+                <span>03</span>
+              </div>
+            </ion-col>
+            <ion-col class="select-cell">
+              <div (click)="setPressureControlScore(4)" [ngClass]="{'active-yellow' : (isActive('pressure', 4)), 'inactive' : (!isActive('pressure', 4)), 'bolded' : (isBolded('pressure', 4))}">
+                <span>04</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- TURN SHAPE/SNOW QUALITY -->
+    <ion-grid>
+      <ion-row>
+        <ion-col col-7>
+          <ion-card>
+            <ion-card-header class="purple-heading">Venue </ion-card-header>
+            <div class="large-divider"></div>
+            <ion-select [(ngModel)]="location">
+              <ion-option *ngFor="let location of locations" value="{{location.id}}">{{location.name}}</ion-option>
+            </ion-select>
+            <!--
+            <ion-select [(ngModel)]="venue">
+              <ion-option value="upper_river_run">Upper River Run</ion-option>
+              <ion-option value="mount_everest">Mount Everest</ion-option>
+              <ion-option value="mount_olympus">Mount Olympus</ion-option>
+            </ion-select>
+          -->
+          </ion-card>
+        </ion-col>
+        <ion-col col-5>
+          <ion-card>
+            <ion-card-header class="purple-heading">Snow Quality </ion-card-header>
+            <div class="small-divider"></div>
+            <ion-select [(ngModel)]="snowQuality">
+              <ion-option value="powder">Powder</ion-option>
+              <ion-option value="packedPowder">Packed Powder</ion-option>
+              <ion-option value="hardPack">Hard Pack</ion-option>
+            </ion-select>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <!-- FEEDBACK -->
+    <ion-card>
+      <ion-card-header class="purple-heading">Turn Shape</ion-card-header>
+      <div class="medium-divider"></div>
+      <ion-card-content>
+        <ion-textarea rows="6" [(ngModel)]="turnShape" placeholder="What Turn Shape Was Used?"></ion-textarea>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- FEEDBACK -->
+    <ion-card>
+      <ion-card-header class="purple-heading">Feedback</ion-card-header>
+      <div class="large-divider"></div>
+      <ion-card-content>
+        <ion-textarea rows="6" [(ngModel)]="feedback" placeholder={{feedbackPlaceholder}}></ion-textarea>
+      </ion-card-content>
+    </ion-card>
+
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>
+      {{title}}
+      <div class="timer">
+        <ion-icon name="timer"></ion-icon>
+        {{sessionDuration}}
+      </div>
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear (click)="finishLesson()">
+         Finish
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="!isReady" class="loading-spinner dark"><ion-spinner name="crescent"></ion-spinner></div>
+  <div *ngIf="isReady">
+
+    <div class="side-bar">
+      <ion-list>
+
+        <ion-item class="attendee" 
+                 *ngFor="let athlete of session_athletes"
+                 [ngClass]="{'attendee-selected' : (isSelectedAttendee(athlete)), 'attendee-absent' : athlete.isAbsent, 'session-ended': athlete.isEnded }">
+          <div class="profile-thumb" (click)="selectAthlete(athlete)">
+            <img class="thumbnail" [src]="athlete.user.thumbBase64" />
+            <div class="status">
+              <div *ngIf="athlete.isAbsent">A</div>
+              <div *ngIf="!athlete.isAbsent">{{athlete.user_drills.length}}</div>
+            </div>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <button color="danger" round large class="primary-round inner-right add-athlete-button" ion-button icon-only (click)="addAthlete()">
+             <ion-icon name="add"></ion-icon>
+           </button>
+        </ion-item>
+
+      </ion-list>
+
+    </div>
+    <div class="main-bar" *ngIf="curAthlete">
+
+      <!-- MAIN SECTION -->
+
+      <div class="student card">
+        <div class="offset-thumb">
+          <img class="thumbnail" [src]="curAthlete.user.thumbBase64" />
+        </div>
+        <h2>{{curAthlete.user.firstName + ' ' + curAthlete.user.lastName}}</h2>
+        <button class="left blue" ion-button (click)="markAbsent(curAthlete.id)">Mark Absent</button>
+        <button class="right red" ion-button (click)="endSession(curAthlete.id)">End Session</button>
+      </div>
+
+      <div class="card">
+        <h3 class="media-title">Media To Be Evaluated({{curAthlete.drillsToBeEvaluated.length}})</h3>
+        <div class="run-table">
+          <div class="run-item" *ngFor="let drill of curAthlete.drillsToBeEvaluated" (click)="doNewUserDrill(drill)">
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col col-2 align-self-cente>
+                  {{drill.difficulty}}.
+                </ion-col>
+                <ion-col col-8 align-self-cente>
+                  {{drill.name}}
+                </ion-col>
+                <ion-col col-2 align-self-cente>
+                  <span class="evaluated-rating">0.0</span>
+                  <button class="ion-button forward-button" clear large icon-only>
+                     <ion-icon name="arrow-forward"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="media-title">Evaluated Runs({{curAthlete.drillsEvaluated.length}})</h3>
+        <div class="run-table">
+          <div class="run-item run-evaluated" *ngFor="let evaluatedDrill of curAthlete.drillsEvaluated" (click)="doEditUserDrill(evaluatedDrill)">
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col col-2 align-self-cente>
+                  {{evaluatedDrill.drill.difficulty}}.
+                </ion-col>
+                <ion-col col-8 align-self-cente>
+                  {{evaluatedDrill.drill.name}}
+                </ion-col>
+                <ion-col col-2 align-self-cente>
+                  <span class="evaluated-rating">{{evaluatedDrill.averageRating}}</span>
+                  <button class="ion-button forward-button" clear large icon-only>
+                     <ion-icon name="arrow-forward"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="bottom-bar">
+    <button ion-button full (click)="goToRecordRuns()">
+        <span>Record Runs</span>
+      </button>
+  </div>
+</ion-footer>

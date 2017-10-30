@@ -1,0 +1,197 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+$dark: #1D1D1E;
+$searchbar-ios-input-search-icon-color: #2D2F89;
+$searchbar-ios-background-color: #ffffff;
+.scroll-content {}
+
+button.primary {
+  background-color: rgba(253, 89, 87, 1.0);
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 0px 44px;
+  height: 42px;
+  line-height: 42px;
+  text-transform: none;
+  ion-icon {
+    position: absolute;
+    right: 12px;
+    color: rgba(188, 53, 52, 1.0);
+    padding: 0px;
+    padding-left: 12px;
+    font-size: 16px;
+    line-height: 42px;
+    font-weight: bold;
+  }
+}
+
+a.link {
+  background: none;
+  color: #ff5752;
+}
+
+.loading-spinner {
+  margin-top: 42%;
+  color: #fff;
+  width: 128px;
+  margin-left: auto;
+  margin-right: auto;
+  ion-spinner * {
+    width: 128px;
+    height: 128px;
+    stroke: #fff;
+  }
+  &.dark {
+    color: #999;
+    ion-spinner * {
+      stroke: #999;
+    }
+  }
+}
+
+ion-tab {
+  ion-navbar.toolbar {
+    padding-top: 40px;
+  }
+}
+
+.thumbnail {
+  border: 2px solid #ccc;
+  &.large {
+    height: 64px;
+    width: 64px;
+    border-radius: 32px;
+  }
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+ion-list {
+  margin: 0px !important;
+}
+
+ion-item {
+  padding-left: 0px !important;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.w50 {
+  width: 49%;
+  float: left;
+}
+
+.w25 {
+  width: 24%;
+  float: left;
+}
+
+.h30px {
+  height: 30px;
+}
+
+.h48px {
+  height: 48px;
+}
+
+h3 {
+  color: #2D2F89 !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  line-height: 19px !important;
+  text-transform: uppercase !important;
+  &.secondary {
+    font-weight: normal !important;
+    color: 6e6e6e !important;
+  }
+}
+
+.section {
+  padding-bottom: 24px !important;
+}
+
+p {
+  text-transform: none;
+  text-overflow: initial;
+}
+
+.float-left {
+  float: left;
+}
+
+.toolbar-title {
+  text-align: center;
+}
+
+//
+// Snowfolio fonts
+//
+//Montserrat
+@font-face {
+  font-family: 'Montserrat Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), local('Montserrat Regular'), url(../assets/fonts/Montserrat-Regular.ttf) format('woff2');
+}
+
+//Montserrat Bold
+@font-face {
+  font-family: 'Montserrat-Bold';
+  font-style: bold;
+  font-weight: 400;
+  src: local('Montserrat-Bold'), local('Montserrat Bold'), url(../assets/fonts/Montserrat-Bold.ttf) format('woff2');
+}
+
+// WorkSans Regular
+@font-face {
+  font-family: 'WorkSans-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('WorkSans-Regular'), local('WorkSans Regular'), url(../assets/fonts/WorkSans-Regular.ttf) format('woff2');
+} 
+
+// WorkSans Medium
+@font-face {
+  font-family: 'WorkSans-Medium';
+  font-style: normal;
+  font-weight: 400;
+  src: local('WorkSans-Medium'), local('WorkSans Medium'), url(../assets/fonts/WorkSans-Medium.ttf) format('woff2');
+} 
+
+// WorkSans Semibold
+@font-face {
+  font-family: 'WorkSans-SemiBold';
+  font-style: normal;
+  font-weight: 400;
+  src: local('WorkSans-SemiBold'), local('WorkSans SemiBold'), url(../assets/fonts/WorkSans-SemiBold.ttf) format('woff2');
+} 
+
+// WorkSans Bold
+@font-face {
+  font-family: 'WorkSans-Bold';
+  font-style: bold;
+  font-weight: 400;
+  src: local('WorkSans-Bold'), local('WorkSans Bold'), url(../assets/fonts/WorkSans-Bold.ttf) format('woff2');
+}
+
+
+// Set to Montserrat by default
+p, span, h1, h2, h3, h4, h5, h6, div {
+	font-family: "Montserrat-Bold";
+}

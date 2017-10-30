@@ -1,0 +1,93 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{type}} Profile</ion-title>
+    </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <ion-item>
+        <ion-label stacked>Personal Information</ion-label>
+    </ion-item>
+
+    <ion-grid text-center>
+        <ion-row>
+            <ion-col width-10>
+                <ion-icon ios="ios-contact-outline" style="zoom:6.0;" md="md-contact-outline"></ion-icon>
+            </ion-col>
+            <ion-col width-75>
+                <ion-item>
+                    <ion-label stacked>Full Name</ion-label>
+                    <ion-input placeholder="What would  you want people to call you?"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-item>
+            <ion-label stacked>Date Of Birth</ion-label>
+            <ion-input placeholder="What do you want people to know about you?"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Bio</ion-label>
+            <ion-input placeholder="What do you want people to call you?"></ion-input>
+        </ion-item>
+        <ion-row>
+            <ion-col width-30>
+                <ion-item>
+                    <ion-label>Gender</ion-label>
+                    <ion-list radio-group>
+                        <ion-item>
+                            <ion-label>Friends</ion-label>
+                            <ion-radio value="friends" checked></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Family</ion-label>
+                            <ion-radio value="family"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                        </ion-item>
+                    </ion-list>
+                </ion-item>
+            </ion-col>
+            <ion-col width-30>
+                <ion-item>
+                    <ion-label stacked>Height</ion-label>
+                    I AM
+                    <ion-input></ion-input>Tall.
+                </ion-item>
+            </ion-col>
+            <ion-col width-30>
+                <ion-item>
+                    <ion-label stacked>Weight</ion-label>
+                    <span>I Weigh</span>
+                    <ion-input></ion-input>Pounds.
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+
+        <ion-item>
+            <ion-label stacked>Certifications</ion-label>
+            <ion-input placeholder="What are you certified in?"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Areas of Experties</ion-label>
+            <ion-input placeholder="What are you expert in?"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Equipment Used</ion-label>
+            <ion-input placeholder="What gear do you use?"></ion-input>
+        </ion-item>
+    </ion-grid>
+    <ion-row>
+        <ion-col width-50>
+            <button ion-button block>Cancel</button>
+        </ion-col>
+        <ion-col width-50>
+            <button ion-button block>Create Profile</button>
+        </ion-col>
+    </ion-row>
+
+
+
+
+</ion-content>

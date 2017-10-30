@@ -1,0 +1,8 @@
+<ion-tabs color="dark">
+	<ion-tab [root]="tab1Root" tabTitle="Dashboard" tabIcon="ios-analytics-outline"></ion-tab>
+	<ion-tab [root]="tab2Root" tabTitle="Events" tabIcon="calendar"></ion-tab>
+	<!--<ion-tab [root]="tab3Root" tabTitle="Profile" tabIcon="person"></ion-tab>-->
+	<!--<ion-tab [root]="tab3Root" tabTitle="History" tabIcon="history"></ion-tab>-->
+	<ion-tab tabTitle="Logout" (ionSelect)="doConfirmLogout()" tabIcon="exit"></ion-tab>
+	<ion-tab tabIcon="snofolio-logo-icon"></ion-tab>
+</ion-tabs>

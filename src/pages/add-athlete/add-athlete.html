@@ -1,0 +1,109 @@
+<ion-header color="dark" class="brown-black-bg">
+  <ion-navbar color="dark" class="brown-black-bg">
+    <ion-title>
+
+    </ion-title>
+    <ion-buttons class="brown-black-bg" end>
+      <button class="brown-black-bg" ion-button clear large (click)="complete()">
+            Done
+       </button>
+    </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content class="brown-black-bg" padding>
+
+  <ion-list class="brown-black-bg" inset>
+
+
+    <h2 class="add-athlete-title">Add to Session:</h2>
+
+
+    <ion-item class="brown-black-bg">
+
+      <ion-searchbar class="brown-black-bg brown-athlete-search-bar" placeholder="Search for a coach or athlete by name" [(ngModel)]="attendeeSearchTerm"
+        (ionInput)="refreshFilteredAttendees($event)" (ionCancel)="onSearchCancel($event)"></ion-searchbar>
+
+      <div class="red-divider"></div>
+
+      <ion-list class="no-border brown-attendee-search-list" *ngIf="attendeeSearchTerm.length > 1">
+
+        <ion-item class="no-border brown-black-bg" *ngFor="let attendee of filteredAttendees">
+          <ion-row class="no-border brown-black-bg" align-items-center>
+
+            <ion-col col-1>
+              <!--ion-icon name="person-outline"></ion-icon-->
+              <!--div class="float-left"><img class="thumbnail" [src]="attendee.thumb.base64" /></div-->
+              <img class="thumbnail" [src]="attendee.thumb.base64" />
+            </ion-col>
+
+            <ion-col>
+
+              <span class="white-text attendee-name">{{attendee.firstName + ' ' + attendee.lastName}}</span>
+              <br/>
+              <span>
+                <span><span class="userTypeDescription"><b>{{attendee.userType}}:</b></span>
+              <span class="white-text">{{attendee.misc}} - {{attendee.phase}}</span>
+              </span>
+              </span>
+            </ion-col>
+
+            <ion-col col-1>
+              <button ion-button clear icon-only color="danger" (click)="addAttendee(attendee)">
+                 <ion-icon name="ios-add-circle-outline"></ion-icon>
+               </button>
+            </ion-col>
+
+          </ion-row>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-item>
+
+
+    <ion-item class="no-border brown-black-bg">
+      <ion-list class="no-border brown-attendee-selected-list" *ngIf="attendees.length > 0">
+        <ion-item class="no-border brown-black-bg" *ngFor="let attendee of attendees">
+          <ion-row class="no-border brown-black-bg" align-items-center>
+
+            <ion-col col-1>
+              <ion-icon name="person-outline"></ion-icon>
+            </ion-col>
+
+            <!--ion-col  class="userTypeCol">
+              <span>{{attendee.firstName + ' ' + attendee.lastName}}</span>
+            </ion-col-->
+            <ion-col>
+              <span class="white-text attendee-name">{{attendee.firstName + ' ' + attendee.lastName}}</span>
+              <br/>
+              <span>
+              <span><span class="userTypeDescription"><b>{{attendee.userType}}:</b></span>
+              <span class="white-text">{{attendee.misc}} - {{attendee.phase}}</span>
+              </span>
+              </span>
+            </ion-col>
+
+            <ion-col class="userTypeCol">
+              <!--span>{{attendee.userType}}</span-->
+            </ion-col>
+
+            <ion-col col-1>
+              <button ion-button clear large color="danger" icon-only (click)="removeAttendee(attendee)">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-item>
+      </ion-list>
+
+    </ion-item>
+
+  </ion-list>
+
+
+</ion-content>

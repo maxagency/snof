@@ -1,0 +1,147 @@
+.add-athlete-title {
+  //height: 63px;
+  //width: 415px;
+  color: #FFFFFF;
+  font-size: 52px;
+  font-weight: bold;
+  line-height: 63px;
+}
+
+.brown-athlete-search-bar {
+  height: 39px;
+  width: 615px;
+  color: #FFFFFF !important; //font-family: Montserrat;
+  font-size: 32px;
+  line-height: 39px;
+  background: #1D1D1E !important;
+  input {
+    background: #1D1D1E !important;
+    color: #FFFFFF !important; //font-family: Montserrat;
+    font-size: 32px;
+    line-height: 39px;
+  }
+
+  .searchbar-input {
+    background: #1D1D1E !important;
+    color: #FFFFFF !important; //font-family: Montserrat;
+    font-size: 32px;
+    line-height: 39px;
+  }
+}
+
+.brown-black-bg {
+  // background: rgb(0.11, 0.11,0.12);
+  //UIColor(red:0.08, green:0.18, blue:0.32, alpha:0.6)
+  //background-color: rgba(255,255,255,0.15)
+  background-color: #1D1D1E;
+}
+
+.brown-attendee-search-list {
+  border-width: 0px 0px 0px 0px;
+  background: #1D1D1E;
+  ion-item {
+    background: #1D1D1E;
+    border-bottom: 1px solid #363637;
+    margin-left: 16px;
+    padding-right: 32px;
+  }
+  ion-label {
+    margin: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  .userTypeCol {
+    text-align: end;
+  }
+  .userTypeDescription {
+    color: red;
+  }
+  .thumbnail {
+    border: 1px solid #ff5752;
+    height: 30px;
+    width: 30px;
+    border-radius: 18px;
+  }
+  .white-text {
+    color: #FFFFFF;
+    text-transform: none;
+    font-weight: normal;
+  }
+  .subtext {
+    font-size: 12px;
+    text-transform: none;
+    font-weight: normal;
+  }
+  button {
+    position: relative;
+    right: 8px;
+  }
+}
+
+.brown-attendee-selected-list {
+  background-color: #1D1D1E !important;
+  border-width: 0px 0px 0px 0px;
+  .name {
+    /*color: #1D1D1E;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: normal;
+    text-transform: none; */
+    //height: 28px;
+    //width: 550px;
+    color: #FFFFFF;
+    //font-family: Montserrat;
+    font-size: 23px;
+    line-height: 28px;
+  }
+  .user-type {
+    color: #9B9B9B;
+    font-size: 14px;
+    line-height: 18px;
+    float: right;
+  }
+  .userTypeDescription {
+    color: red;
+  }
+  .thumbnail {
+    border: 1px solid #ff5752;
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+  }
+  button {
+    border: 1px solid #ff5752;
+    height: 30px;
+    width: 30px;
+    border-radius: 18px;
+    line-height: 18px;
+    ion-icon {
+      font-size: 26px;
+    }
+  }
+}
+
+.no-border {
+  border-width: 0px 0px 0px 0px !important;
+}
+
+.red-divider {
+  box-sizing: border-box;
+  height: 2px;
+  width: 700px;
+  border: 2px solid #FF5752;
+}
+
+.attendee-name {
+  /*color: #1D1D1E;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: normal;
+  text-transform: none; */
+  //height: 28px;
+  //width: 550px;
+  color: #FFFFFF;
+  //font-family: Montserrat;
+  font-size: 23px;
+  line-height: 28px;
+}

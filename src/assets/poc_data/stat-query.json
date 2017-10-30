@@ -1,0 +1,24 @@
+[
+	{
+		"id": "leaderboard",
+		"users": [
+			"athlete-3",
+			"athlete-1",
+			"athlete-2"
+		]
+	},
+	{
+		"id": "top-athletes-this-month",
+		"users": [
+			"athlete-3",
+			"athlete-1",
+			"athlete-2",
+			"athlete-4"
+		]
+	},
+	{
+		"id": "attendance",
+		"percent": 82,
+		"trend": "up"
+	}
+]

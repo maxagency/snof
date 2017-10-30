@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar class="training-session-nav" hideBackButton="true" color="dark">
+    <ion-title>
+      SYNCHRONIZE LOCAL DATA
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only clear large color="danger" class="close-button" (click)="cancel()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content class="grey-bg" padding>
+
+  <div *ngIf="isSyncing" class="syncing">
+    <div class="spin">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+    <div class="status">
+      {{ syncStatusMsg }}
+    </div>
+  </div>
+  <div *ngIf="!isSyncing" class="not-syncing">
+
+    <div *ngIf="hasLocalChanges">
+      You have local changes. Please connect to a WIFI network and synchronize before logging out.
+    </div>
+    <div *ngIf="!hasLocalChanges">
+      Your device is up to date.
+    </div>
+    
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <div class="padding">
+    <button *ngIf="!isSyncing" ion-button full class="confirm-button" (click)="doStartSync()">
+      Start Sync
+    </button>
+    <button *ngIf="isSyncing" ion-button full class="confirm-button" (click)="doStopSync()">
+      Stop Syncing
+    </button>
+  </div>
+</ion-footer>

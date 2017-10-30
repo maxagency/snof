@@ -1,0 +1,124 @@
+.list-header {
+  color: #2d2889;
+  border-bottom: 2px solid #2d2889 !important;
+  padding-bottom: 4px;
+  padding-top: 24px;
+  ion-label {
+    font-size: 24px !important;
+    font-weight: bold !important;
+    line-height: 29px !important;
+    text-transform: none !important;
+  }
+  .item-inner {
+    border-bottom: 0px !important;
+  }
+}
+
+.athlete-select {
+  .left {
+    float: left;
+    width: 90px;
+  }
+  .center {
+    float: left;
+    width: 70%;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    line-height: 64px !important;
+    text-transform: none !important;
+    color: #1d1d1e !important;
+  }
+  .right {
+    float: left;
+    width: 40px;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    line-height: 64px !important;
+    text-transform: none !important;
+    color: #ccc !important;
+  }
+}
+
+.attach-video-header {
+  height: 60px !important;
+  background-color: #1D1D1E;
+  ion-navbar {
+    height: 60px;
+  }
+  button {
+    // height: 27px;
+    //width: 64.87px;
+    color: #9B9B9B !important; //font-family: Montserrat;
+    font-size: 22px;
+    line-height: 27px; //margin-top: 10px;
+    //margin-left: 14px;
+  }
+  ion-title {
+    //height: 29px;
+    //width: 341.63px;
+    color: #FFFFFF; //font-family: Montserrat;
+    font-size: 24px !important;
+    font-weight: bold;
+    line-height: 29px;
+    text-align: center;
+  }
+}
+
+.buttom-grid {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  border-top: 2px #C2C2C2;
+}
+
+.evaluate-now-row {
+  height: 100px;
+  background-color: #FFFFFF;
+  span {
+    //height: 29px;
+    //width: 173px;
+    color: #9B9B9B; //font-family: Montserrat;
+    font-size: 24px;
+    line-height: 29px; //text-align: center;
+  }
+  
+  
+}
+
+.evaluate-col {
+	padding-top:35px;
+	padding-left:35px;
+	padding-bottom:35px;
+}
+
+.check-col {
+	padding-top:35px;
+	padding-right:35px;
+	padding-bottom:35px;
+}
+
+.attach-button-row {
+  //margin: 0px 0px 0px 0px;
+  //padding: 0px 0px 0px 0px;
+  height: 100px;
+  background-color: #FF5752;
+  button {
+    background-color: #FF5752;
+    color: white;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.attach-button-text-div {
+
+}
+
+.attach-button-arrow-div {
+  
+}
+
+.selected-athlete {
+  background-color: #0A4874 !important;
+}

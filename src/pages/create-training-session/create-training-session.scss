@@ -1,0 +1,79 @@
+ion-searchbar {
+  margin-bottom: 0px;
+}
+
+.attendee-search-list {
+  background: #1D1D1E;
+  ion-item {
+    background: #1D1D1E;
+    border-bottom: 1px solid #363637;
+    margin-left: 16px;
+    padding-right: 32px;
+  }
+  ion-label {
+    margin: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  .userTypeCol {
+    text-align: end;
+  }
+  .userTypeDescription {
+    color: red;
+  }
+  .thumbnail {
+    border: 1px solid #ff5752;
+    height: 30px;
+    width: 30px;
+    border-radius: 18px;
+  }
+  .white-text {
+    color: #FFFFFF;
+    text-transform: none;
+    font-weight: normal;
+  }
+  .subtext {
+    font-size: 12px;
+    text-transform: none;
+    font-weight: normal;
+  }
+  button {
+    position: relative;
+    right: 8px;
+  }
+}
+
+.attendee-selected-list {
+  .name {
+    color: #1D1D1E;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: normal;
+    text-transform: none;
+  }
+  .user-type {
+    color: #9B9B9B;
+    font-size: 14px;
+    line-height: 18px;
+    float: right;
+  }
+  .thumbnail {
+    border: 1px solid #ff5752;
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+  }
+  button {
+    border: 1px solid #ff5752;
+    height: 30px;
+    width: 30px;
+    border-radius: 18px;
+    line-height: 18px;
+    ion-icon {
+      font-size: 26px;
+    }
+  }
+}
+
+$searchbar-ios-input-search-icon-color: #2D2F89;
+$searchbar-ios-background-color: #ffffff;

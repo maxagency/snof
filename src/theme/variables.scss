@@ -1,0 +1,128 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+
+  //LAYOUT COLOURS
+  layout-primary: #FF5752,
+  layout-secondary: #1D1D1E, 
+  layout-success: #7ED321,
+  
+  //BACKGROUND COLOURS
+  bg-primary: #1D1D1E,
+  bg-secondary: #000000,
+  
+  //FONT COLOURS
+  text-primary: #1D1D1E,
+  text-secondary: #8B8B8B,
+  text-grey: #4A4A4A,
+  text-lightgrey: #9B9B9B,
+  
+  //LINK COLOURS
+  link-primary: #FF5752,
+  link-secondary: #2D2F89,
+  link-tertiary: #38D285,
+  
+  //FORM COLOURS
+  form-grey: #4A4A4A,
+  form-darkgrey: #2C2C2C,
+  form-lightgrey: #9B9B9B,
+  form-focus: #FF5752,
+  
+  //PHASE COLOURS
+  phase1-2: #004992,
+  phase3-5: #D7B534,
+  phase6: #E50040,
+  
+  //FOCUS COLOURS
+  focus-balance: #6939B5,
+  focus-edging: #FB4D3D,
+  focus-pressure: #38CF4E,
+  focus-rotary: #35A7E3,
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+$tabs-ios-tab-icon-color-active: red;
+$tabs-ios-tab-color-active: red;
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+// history icon
+@import "iconmoon";
