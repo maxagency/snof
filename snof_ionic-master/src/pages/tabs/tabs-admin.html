@@ -1,0 +1,10 @@
+<ion-tabs color="dark" tabsPlacement="top">
+	<ion-tab [root]="tab1Root" tabTitle="Events" ></ion-tab>
+	<ion-tab [root]="tab2Root" tabTitle="Members"></ion-tab>
+	<ion-tab [root]="tab3Root" tabTitle="Drills"></ion-tab>
+	<ion-tab [root]="tab4Root" tabTitle="Profile"></ion-tab>
+	<!--<ion-tab [root]="tab3Root" tabTitle="Profile" tabIcon="person"></ion-tab>-->
+	<!--<ion-tab [root]="tab3Root" tabTitle="History" tabIcon="history"></ion-tab>-->
+	<ion-tab tabTitle="Logout" (ionSelect)="doConfirmLogout()" tabIcon="exit"></ion-tab>
+	<ion-tab tabIcon="snofolio-logo-icon"></ion-tab>
+</ion-tabs>

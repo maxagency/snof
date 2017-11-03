@@ -1,0 +1,29 @@
+[
+	{
+		"id": "program-1",
+		"phase": "phase-1",
+		"location": "location-1",
+		"description": "In this series we will focus on strength training for the Sun Valley competition next week",
+		"sessions": ["session-1a","session-1b","session-1c"],
+		"attendees": ["athlete-1","athlete-2","athlete-3","trainer-2"],
+		"drills": ["drill-1","drill-2","drill-3","drill-4","drill-5"]
+	},
+	{
+		"id": "program-2",
+		"phase": "phase-2",
+		"location": "location-4",
+		"description": "In this series we will focus on strength training for the Sun Valley competition next week",
+		"sessions": ["session-2a","session-2b"],
+		"attendees": ["athlete-1","athlete-2","athlete-3","trainer-1"],
+		"drills": ["drill-1","drill-2","drill-3","drill-4"]
+	},
+	{
+		"id": "program-3",
+		"phase": "phase-3",
+		"location": "location-3",
+		"description": "In this series we will focus on strength training for the Sun Valley competition next week",
+		"sessions": ["session-3a"],
+		"attendees": ["athlete-1","athlete-2","athlete-3","trainer-3"],
+		"drills": ["drill-1","drill-2","drill-3"]
+	}
+]

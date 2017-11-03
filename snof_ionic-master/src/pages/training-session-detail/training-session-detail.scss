@@ -1,0 +1,76 @@
+.section {
+  .current {
+    color: #1d1d1e;
+    font-weight: bold;
+  }
+  .past {
+    color: #c0c0c0;
+    font-weight: normal;
+  }
+  .future {
+    color: #4a4a4a;
+    font-weight: normal;
+  }
+}
+
+.top-block {
+  margin-top: 60px;
+}
+
+.person-name {
+  margin-left: 2%;
+  margin-top: 2%;
+  height: 22px;
+  width: 184px;
+  color: #1D1D1E; //font-family: Montserrat;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: left;
+}
+
+.focus-text {
+  height: 50px;
+  width: 593.36px;
+  color: #1D1D1E; //font-family: Montserrat;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.resort-name {
+  //height: 24px;
+  //width: 331px;
+  color: #4A4A4A; //font-family: Montserrat;
+  font-size: 20px;
+  line-height: 24px;
+  //text-align: center;
+}
+
+.detail-title {
+  //height: 37px;
+  //width: 376px;
+  color: #2D2F89;
+  //font-family: Montserrat;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 37px;
+  //text-align: center;
+}
+
+.detail-title-block {
+  text-align: center;
+}
+
+.is-cur-user, .is-head-coach{
+  font-size: 13px;
+  color: #999;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.trainer-subtitle {
+  margin-bottom: 20px;
+} 
+
+.trainer-div {
+  margin-bottom: 20px;
+}

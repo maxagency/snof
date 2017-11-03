@@ -1,0 +1,26 @@
+[
+  {
+    "id": "phase-1",
+    "name": "Phase 1"
+  },
+  {
+    "id": "phase-2",
+    "name": "Phase 2"
+  },
+  {
+    "id": "phase-3",
+    "name": "Phase 3"
+  },
+  {
+    "id": "phase-4",
+    "name": "Phase 4"
+  },
+  {
+    "id": "phase-5",
+    "name": "Phase 5"
+  },
+  {
+    "id": "phase-6",
+    "name": "Phase 6"
+  }
+]

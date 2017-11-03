@@ -1,0 +1,139 @@
+<ion-content padding>
+
+  <div *ngIf="!isReady" class="loading-spinner"><ion-spinner name="crescent"></ion-spinner></div>
+  <div *ngIf="isReady">
+
+    <ion-grid>
+
+      <!-- TOP SECTION -->
+      <ion-row>
+        <ion-col col-12 id="dashboard-top">
+          <div style="float:right">
+            <button ion-button icon-right style="float: right;" class="secondary" (click)="goToSynchronize()">
+              Synchronize
+              <ion-icon name="refresh"></ion-icon>
+            </button>
+            <button *ngIf="isOnline" ion-button icon-right style="float: right;" class="secondary" (click)="goOffline()">
+              Online
+              <ion-icon ios="ios-wifi"></ion-icon>
+            </button>
+            <button *ngIf="!isOnline" ion-button icon-right style="float: right;" class="secondary" (click)="goOnline()">
+              Offline
+              <ion-icon ios="ios-wifi-outline"></ion-icon>
+            </button>
+            {{ str_timeOfLastSync }}
+          </div>
+
+          <!-- HAS SESSION -->
+          <div *ngIf="nextSession" class="has-sessions">
+            <p class="greeting">Hello {{ firstName }},</p>
+            <p>Your next training session is:</p>
+            <p class="next-date">{{ str_sessionDate }}</p>
+            <p class="next-time">{{ str_sessionTime }}</p>
+
+            <button ion-button icon-right class="primary" (click)="goToTrainingSessionDetail()">
+              View Session Details
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </div>
+
+          <!-- NO SESSION -->
+          <div *ngIf="!nextSession" class="no-sessions">
+            <p class="greeting">Hello {{ firstName }},</p>
+            <p>You've got no sessions scheduled for this week. Enjoy your day off!</p>
+
+            <button ion-button icon-right class="primary" (click)="goToCreateTrainingSession()">
+              Create a Session
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </div>
+
+
+        </ion-col>
+      </ion-row>
+
+      <!-- MIDDLE SECTION -->
+      <ion-row id="dashboard-middle">
+
+        <!-- MIDDLE LEFT (FOR BAR GRAPH) -->
+        <ion-col id="dashboard-middle-left" col-6>
+
+          <!-- BAR GRAPH -->
+          <div *ngIf="stat_attendance" class="stat-box">
+            <div class="stat percentage">
+              <p class="value">{{stat_attendance.percent}}</p>
+              <p class="percent-symbol">%</p>
+            </div>
+
+            <!-- CAPTION FOR BAR GRAPH -->
+            <div class="caption">
+              <p class="label">Attendance
+                <ion-icon name="arrow-{{stat_attendance.trend}}"></ion-icon>
+              </p>
+             
+              <p class="sub-label">LAST 7 DAYS</p>
+            </div>
+          </div>
+
+        </ion-col>
+
+        <!-- MIDDLE RIGHT (FOR LEADERBOARD) -->
+        <ion-col id="dashboard-middle-right" col-6>
+
+          <div class="stat-box">
+            <!-- LEADERBOARD -->
+            <div class="stat leaderboard">
+              <div *ngFor="let user of stat_leaderboard" class="place {{user.css_class}}">
+                <div class="label">{{user.position}}<span class="suffix">{{user.suffix}}</span></div>
+                <div class="person">
+                  <div><img class="profile-thumb" [src]="user.thumbBase64"/></div>
+                  <p class="name">{{user.firstName}} {{user.lastName}}</p>
+                </div>
+                <div *ngIf="user.position!=3" class="step"><div class="bottom"></div><div class="right"></div></div>
+              </div>
+            </div>
+
+            <!-- CAPTION -->
+            <div class="caption">
+              <p class="label">Top Athletes</p>
+              <p class="sub-label">THIS MONTH</p>
+            </div>
+          </div>
+
+        </ion-col>
+
+      </ion-row>
+
+      <!-- BOTTOM SECTION (FOR CURVED LINE GRAPH) -->
+      <ion-row>
+        <ion-col id="dashboard-bottom" col-12>
+
+
+          <div class="line-graph-section">
+            <!-- CURVED LINE GRAPH GRAPH -->
+            <div class="canvas-div">
+              <canvas #lineCanvas></canvas>
+            </div>
+            <!-- CAPTION -->
+            <div class="caption">
+              <p class="label">Team Average</p>
+              <p class="sub-label">THIS SEASON</p>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </div>
+</ion-content>
+
+<!--ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+        This column will be 12 columns wide by default,
+        9 columns at the small breakpoint,
+        6 at the medium breakpoint, 4 at large, and 3 at xl.
+      </ion-col>
+    </ion-row>
+  </ion-grid-->

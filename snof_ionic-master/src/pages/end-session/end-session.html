@@ -1,0 +1,270 @@
+<ion-header>
+  <ion-navbar class="training-session-nav" hideBackButton="true" color="dark">
+    <ion-title>
+      COMPLETE TRAINING FOR THIS ATHLETE
+    </ion-title>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content class="grey-bg" padding>
+
+  <div class="user-thumb"><img class="thumbnail large" [src]="userThumb" /></div>
+  <ion-list inset class="grey-bg offset-thumbnail">
+
+    <ion-card padding class="top-block">
+
+      <!-- Selection for phase/program -->
+      <h2 class="person-name">{{name}}</h2>
+      <h2 class="sub-text">Ending Session Due to:</h2>
+
+      <!--
+      <ion-grid>
+          <ion-row>
+    
+            <ion-col col-4>
+              <span>{{totalTime}}:
+                <br>
+                Total Time
+              </span>
+            </ion-col>
+    
+            <ion-col col-4>
+              <span>
+                {{completedRuns}}:
+                <br>
+                 Completed Runs
+              </span>
+            </ion-col>
+    
+            <ion-col col-4>
+              <span>
+                {{averageScore}}:
+                <br>
+                Average Score
+              </span>
+            </ion-col>
+    
+          </ion-row>
+        </ion-grid>
+
+      -->
+
+      <ion-grid>
+        <ion-row>
+
+          <ion-col col-3>
+            <div class="picture-option">
+              <ion-grid>
+
+                <ion-row class="picture-row">
+                  <ion-col>
+                    <img src="assets/images/Completion.png@1x.png">
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <span>Completion</span>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <ion-checkbox></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-col>
+
+          <ion-col col-3>
+            <div class="picture-option">
+              <ion-grid>
+
+                <ion-row class="picture-row">
+                  <ion-col>
+                    <img src="assets/images/EarlyDismissal.png@1x.png">
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <span>Early Dismissal</span>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <ion-checkbox></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </ion-col>
+
+          <ion-col col-3>
+            <div class="picture-option">
+              <ion-grid>
+
+                <ion-row class="picture-row">
+                  <ion-col>
+                    <img src="assets/images/Injury.png@1x.png">
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <span>Injury</span>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <ion-checkbox></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </ion-col>
+
+          <ion-col col-3>
+            <div class="picture-option">
+              <ion-grid>
+
+                <ion-row class="picture-row">
+                  <ion-col>
+                    <img src="assets/images/PoorBehaviour.png@1x.png">
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <span>Poor Behavior</span>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <ion-checkbox></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+
+      <div>
+        <div class="purple-heading">Overall Comment</div>
+        <div class="medium-divider"></div>
+        <div>
+          <ion-textarea rows="6" [(ngModel)]="overallComment" placeholder="Do you have anything else to add?"></ion-textarea>
+        </div>
+      </div>
+
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+
+      <ion-col>
+        <button ion-button full (click)="cancel()">
+               Cancel
+            </button>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button full danger color="danger" (click)="endSession()">
+               End Session
+             </button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>
+
+<!--ion-content class="grey-bg" padding>
+  <ion-item>
+    <h2>{{name}}</h2>
+  </ion-item>
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+
+        <ion-col col-4>
+          <span>{{totalTime}}:
+            <br>
+            Total Time
+          </span>
+        </ion-col>
+
+        <ion-col col-4>
+          <span>
+            {{completedRuns}}:
+            <br>
+             Completed Runs
+          </span>
+        </ion-col>
+
+        <ion-col col-4>
+          <span>
+            {{averageScore}}:
+            <br>
+            Average Score
+          </span>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>You are ending this session due to</ion-label>
+    <ion-select [(ngModel)]="reasonForSendingHome">
+      <ion-option value="completion">Completion</ion-option>
+      <ion-option value="earlyDismissal">Early Dismissal</ion-option>
+      <ion-option value="injury">Injuryl</ion-option>
+      <ion-option value="poorBehavior">Poor Behavior</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Overall Comment</ion-label>
+    <ion-textarea placeholder="What would you like to tell {{firstName}}?"></ion-textarea>
+  </ion-item>
+
+
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+      </ion-col>
+      <ion-col col-4>
+        <button ion-button full class="confirm-button" (click)="endSession()">
+              End Session
+            </button>
+      </ion-col>
+      <ion-col col-4></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer-->

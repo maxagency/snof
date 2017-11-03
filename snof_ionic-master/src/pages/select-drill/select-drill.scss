@@ -1,0 +1,62 @@
+$drill_bg: rgb(0.11, 0.11, 0.12);
+.select-drill-content {
+  background: $dark !important;
+}
+
+.select-drill-heading {
+  color: #FFFFFF; //font-family: Montserrat;
+  font-size: 52px;
+  font-weight: bold;
+  line-height: 63px;
+  margin-left: 35px;
+  margin-bottom: 35px;
+}
+
+.drill-name {
+  color: #FFFFFF !important; // font-family: Montserrat;
+  font-size: 28px;
+  line-height: 39px;
+}
+
+.drill-block {
+  height: 80px;
+  width: 768px;
+  border: 1px solid rgba(155, 155, 155, 0.15);
+  //background: $drill_bg !important;
+}
+
+.drill-bg-color {
+  background: $dark;
+}
+
+.drill-detail-back {
+  //height: 33px;
+  // width: 67px;
+  opacity: 0.5;
+  color: #9B9B9B; //font-family: Montserrat;
+  font-size: 26.4px;
+  line-height: 33px;
+  text-align: center;
+}
+
+.drill-detail-navbar {
+  height: 80px;
+  background: $dark !important;
+  button {
+    opacity: 0.5 !important;
+    color: #9B9B9B !important; //font-family: Montserrat;
+    font-size: 26.4px !important;
+    line-height: 33px !important;
+    text-align: center !important;
+    margin-left: 35px !important;
+  }
+  ion-navbar {
+    height: 80px;
+    background: $dark !important;
+  }
+}
+
+.green-circle-col {
+      margin-top: 8px;
+    margin-left: 25px;
+}

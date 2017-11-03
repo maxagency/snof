@@ -1,0 +1,76 @@
+[
+	{
+		"id": "trainer-1",
+		"userType": "HEAD COACH",
+		"firstName": "Anders",
+		"lastName": "Kitson",
+		"misc": "Free Ski",
+		"thumb": "image-1",
+		"email": "head1@snofolio.com",
+		"password": "snowisgood"
+	},
+	{
+		"id": "trainer-2",
+		"userType": "COACH",
+		"firstName": "Andrea",
+		"lastName": "Galindo",
+		"misc": "Nordic",
+		"thumb": "image-2",
+		"email": "coach1@snofolio.com",
+		"password": "snowisgood"
+	},
+	{
+		"id": "trainer-3",
+		"userType": "COACH",
+		"firstName": "Alan",
+		"lastName": "Turing",
+		"misc": "Nordic",
+		"thumb": "image-3"
+	},
+	{
+		"id": "athlete-1",
+		"userType": "ATHLETE",
+		"firstName": "Anderson",
+		"lastName": "Nguyen",
+		"misc": "Snowboarding",
+		"thumb": "image-4",
+		"email": "ath1@snofolio.com",
+		"password": "snowisgood"
+	},
+	{
+		"id": "athlete-2",
+		"userType": "ATHLETE",
+		"firstName": "Abigail",
+		"lastName": "Bentley",
+		"misc": "Nordic",
+		"thumb": "image-7",
+		"email": "ath2@snofolio.com",
+		"password": "snowisgood"
+	},
+	{
+		"id": "athlete-3",
+		"userType": "ATHLETE",
+		"firstName": "Jordan",
+		"lastName": "Peton",
+		"misc": "Nordic",
+		"thumb": "image-6"
+	},
+	{
+		"id": "athlete-4",
+		"userType": "ATHLETE",
+		"firstName": "Jane",
+		"lastName": "Davis",
+		"misc": "Nordic",
+		"thumb": "image-5"
+	},
+	{
+		"id": "athlete-5",
+		"userType": "ATHLETE",
+		"firstName": "Abby",
+		"lastName": "Havel",
+		"misc": "Nordic",
+		"thumb": "image-5",
+		"email": "test@snofolio.com",
+		"password": "snowisgood"
+	}
+]

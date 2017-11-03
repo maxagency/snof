@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-navbar class="training-session-nav" hideBackButton="true" color="dark">
+    <ion-title>
+      CREATE A TRAINING SESSION
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only clear large color="danger" class="close-button" (click)="cancel()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content class="grey-bg" padding>
+
+  <ion-list inset class="grey-bg">
+
+    <ion-card padding class="top-block">
+      <ion-list inset>
+
+        <!-- Selection for phase/program -->
+        <ion-item>
+          <ion-label>Select a program/phase</ion-label>
+          <ion-select [(ngModel)]="phase">
+            <ion-option *ngFor="let phase of phases" value="{{phase.id}}">{{phase.name}}</ion-option>
+            <!--<ion-option value="Phase 1">Phase 1</ion-option>
+            <ion-option value="Phase 2">Phase 2</ion-option>
+            <ion-option value="Phase 3">Phase 3</ion-option>-->
+          </ion-select>
+        </ion-item>
+
+        <!-- Selection for location -->
+        <ion-item>
+          <ion-label>Venue</ion-label><br>
+          <ion-select [(ngModel)]="location">
+            <ion-option *ngFor="let location of locations" value="{{location.id}}">{{location.name}}</ion-option>
+            <!--<ion-option value="location-1">The moon</ion-option>
+            <ion-option value="location-2">Mt. Everest</ion-option>
+            <ion-option value="location-3">Lame Bunny hills</ion-option>
+            <ion-option value="location-4">Sun Valley Resort</ion-option>-->
+          </ion-select>
+        </ion-item>
+
+
+      </ion-list>
+    </ion-card>
+
+
+    <ion-card padding class="form-input-margin">
+      <ion-list inset>
+
+        <ion-item>
+          <ion-label stacked >Focus</ion-label>
+          <ion-textarea placeholder="Write something about this training event" rows="6" type="text" [(ngModel)]="description"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="w50">
+          <ion-label stacked>Dates</ion-label>
+          <ion-datetime min="2017" max="2025" displayFormat="MM/DD/YYYY" [(ngModel)]="sessionDate">
+          </ion-datetime>
+        </ion-item>
+
+
+        <ion-item class="w25">
+          <ion-label stacked >Times</ion-label>
+          <ion-datetime placeholder="From" displayFormat="h:mm a" [(ngModel)]="sessionStartTime">
+          </ion-datetime>
+        </ion-item>
+
+        <ion-item class="w25">
+          <ion-label stacked >&nbsp;</ion-label>
+          <ion-datetime placeholder="To" displayFormat="h:mm a" [(ngModel)]="sessionEndTime">
+          </ion-datetime>
+        </ion-item>
+
+
+        <ion-item>
+
+          <h3>Attendees ({{ attendees.length }})</h3>
+
+          <ion-searchbar placeholder="Search for a coach or athlete by name" [(ngModel)]="attendeeSearchTerm" (ionInput)="refreshFilteredAttendees($event)"
+            (ionCancel)="onSearchCancel($event)">></ion-searchbar>
+
+          <ion-list class="attendee-search-list" *ngIf="attendeeSearchTerm.length > 1">
+
+            <ion-item *ngFor="let attendee of filteredAttendees">
+              <ion-row align-items-center>
+
+                <ion-col col-1>
+                  <div><img class="thumbnail large" [src]="attendee.thumbBase64"/></div>
+                </ion-col>
+
+                <ion-col>
+                 
+                  <span class="white-text">{{ attendee.firstName }} {{ attendee.lastName }}</span>
+                  <br/>
+                  <span class="subtext">
+                  <span><span class="userTypeDescription"><b>{{attendee.userType}}:</b></span><span class="white-text"> {{attendee.misc}} - {{attendee.phase}}</span></span>
+                  </span>
+                </ion-col>
+
+                <ion-col col-1>
+                  <button ion-button clear icon-only color="danger" (click)="addAttendee(attendee)">
+                  <ion-icon name="ios-add-circle-outline"></ion-icon>
+                </button>
+                </ion-col>
+
+              </ion-row>
+            </ion-item>
+
+          </ion-list>
+
+        </ion-item>
+
+
+        <ion-item>
+          <ion-list class="attendee-selected-list" *ngIf="attendees.length > 0">
+            <ion-item *ngFor="let attendee of attendees">
+              <ion-row align-items-center>
+
+                <ion-col col-2>
+                  <div><img class="thumbnail large" [src]="attendee.thumbBase64"/></div>
+                </ion-col>
+
+                <ion-col>
+                  <span class="name">{{attendee.firstName}} {{attendee.lastName}}</span>
+                </ion-col>
+
+                <ion-col>
+                  <span class="user-type">{{attendee.userType}}</span>
+                </ion-col>
+
+                <ion-col col-1>
+                  <button ion-button clear large color="danger" icon-only (click)="removeAttendee(attendee)">
+                    <ion-icon name="close"></ion-icon>
+                   </button>
+                </ion-col>
+
+              </ion-row>
+
+            </ion-item>
+          </ion-list>
+
+          <!-- If there are no attendees -->
+          <h4 *ngIf="attendees.length === 0">
+            No attendees yet. Start typing to add students
+          </h4>
+
+        </ion-item>
+
+      </ion-list>
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer>
+  <div class="padding">
+    <button ion-button full class="confirm-button" (click)="doCreateSession()">
+      Create Session
+    </button>
+  </div>
+</ion-footer>

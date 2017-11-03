@@ -55,7 +55,6 @@ export class LocalDataServiceProvider {
 		this.dbAdaptor = dbAdaptor;
 		this.restApi = restApi;
 		this.alertCtrl = alertCtrl;
-
 		this.settings = { // APP starts as online to be able to comunicate to the server and get user credentials
 			onlineMode: true,
 			autoRefresh: false,
@@ -281,18 +280,14 @@ export class LocalDataServiceProvider {
 
 
 		/*
-
 		return new Promise((resolve, reject) => {
 			// temporary stub
 			this.queryObjects('user', {}).then((users: any) => {
-
 				users = users.filter(function(user){
 					return user.email==username && user.password==password;
 				});
-
 				if(users.length>0){
 					this.curUser = users[0];
-
 					// cache in local storage
 					this.storage.set('userCache', {
 						username: username,
@@ -305,25 +300,72 @@ export class LocalDataServiceProvider {
 					this.curUser = null;
 					reject("Invalid username or password. Please try again");
 				}
-
 			});
-
 		});
 		*/
+	}
+	createUser(usertype,username,email,password,id){
+		var that = this;
+		return new Promise((resolve, reject) => {
+			that.restApi.createUser({
+				id : id,
+				userType: usertype,
+				username: username,
+				password: password,
+				email: email,
+					
+			}).then((res: any) => {
+				that.curUser = res.user;
+				// cache in local storage
+				that.storage.set('userCache', {
+					
+				}).then(res => {
+					resolve(that.curUser);
+				});
 
+			}, err => {
+				that.curUser = null;
+				reject("Invalid username or password. Please try again");
+			});
+
+
+		});
+
+
+		/*
+		return new Promise((resolve, reject) => {
+			// temporary stub
+			this.queryObjects('user', {}).then((users: any) => {
+				users = users.filter(function(user){
+					return user.email==username && user.password==password;
+				});
+				if(users.length>0){
+					this.curUser = users[0];
+					// cache in local storage
+					this.storage.set('userCache', {
+						username: username,
+						password: password
+					}).then(res => {
+						resolve(this.curUser);
+					});
+				}
+				else{
+					this.curUser = null;
+					reject("Invalid username or password. Please try again");
+				}
+			});
+		});
+		*/
 	}
 
 	logoutUser(){
 
 		return new Promise((resolve, reject) => {
 			this.storage.remove('userCache').then((res: any) => {
-
 				this.curUser = null;
 				resolve(true);
-
 			});
 		});
-
 	}
 
 	getCurUser() {

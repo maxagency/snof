@@ -6,87 +6,204 @@
 
 </ion-header>
 <ion-content padding>
-    <ion-item>
-        <ion-label stacked>Personal Information</ion-label>
-    </ion-item>
 
-    <ion-grid text-center>
-        <ion-row>
-            <ion-col width-10>
-                <ion-icon ios="ios-contact-outline" style="zoom:6.0;" md="md-contact-outline"></ion-icon>
-            </ion-col>
-            <ion-col width-75>
+    <form [formGroup]="signupForm" (submit)="signup()" novalidate>
+        <div *ngIf="type == 'Create'">
+             <ion-item>
+                    <ion-label stacked>Username</ion-label>
+                    <ion-input placeholder="Username" [formControl]="signupForm.controls['name']" type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['name'].touched">
+                    <div *ngIf="!signupForm.controls['name'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Full name must have (4 to 25) letters</strong>
+                    </div>
+                </div>
+                <ion-item>
+                    <ion-label stacked>User Type</ion-label>
+                    <ion-select [formControl]="signupForm.controls['usertype']"  placeholder="Select Usertype">
+                        <ion-option value="U">User</ion-option>
+                        <ion-option value="T">Trainer</ion-option>
+                    </ion-select>
+                </ion-item>
+                <div *ngIf="signupForm.controls['usertype'].touched">
+                    <div *ngIf="!signupForm.controls['usertype'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Must select the user type</strong>
+                    </div>
+                </div>
+                <ion-item>
+                    <ion-label stacked>E-mail</ion-label>
+                    <ion-input placeholder="Enter your E-mail id" [formControl]="signupForm.controls['email']" type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['email'].touched">
+                    <div *ngIf="!signupForm.controls['email'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Enter valid E-mail</strong>
+                    </div>
+                </div>
+             <ion-item>
+                    <ion-label stacked>Password</ion-label>
+                    <ion-input placeholder="Password" [formControl]="signupForm.controls['password']" type="password"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['password'].touched">
+                    <div *ngIf="!signupForm.controls['password'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Enter your password min 6 letters</strong>
+                    </div>
+                </div>
+                 <!-- <ion-item>
+                    <ion-label stacked>Confirm Password</ion-label>
+                    <ion-input placeholder="confirmpassword" [formControl]="signupForm.controls['confirmpassword']" type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['confirmpassword'].touched">
+                    <div *ngIf="!signupForm.controls['confirmpassword'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp; Enter correct password</strong>
+                    </div>
+                </div> -->
+        </div>
+        <div *ngIf="type != 'Create'">
+             <ion-item>
+            <h4>Personal Information</h4>
+        </ion-item>
+        <ion-card>
+            <ion-card-content>
+                
+                <ion-row>
+                    <ion-col width-10>
+                        <ion-icon ios="ios-contact-outline" style="zoom:6.0;" md="md-contact-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label stacked>User Type</ion-label>
+                            <ion-select [formControl]="signupForm.controls['usertype']">
+                                <ion-option value="U">User</ion-option>
+                                <ion-option value="T">Trainer</ion-option>
+                            </ion-select>
+                        </ion-item>
+                        <div *ngIf="signupForm.controls['usertype'].touched">
+                            <div *ngIf="!signupForm.controls['usertype'].valid" class="alert-danger">
+                                <strong>&nbsp;&nbsp;Must select the user type</strong>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
                 <ion-item>
                     <ion-label stacked>Full Name</ion-label>
-                    <ion-input placeholder="What would  you want people to call you?"></ion-input>
+                    <ion-input placeholder="What would  you want people to call you?" [formControl]="signupForm.controls['name']" type="text"></ion-input>
                 </ion-item>
-            </ion-col>
-        </ion-row>
-        <ion-item>
-            <ion-label stacked>Date Of Birth</ion-label>
-            <ion-input placeholder="What do you want people to know about you?"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label stacked>Bio</ion-label>
-            <ion-input placeholder="What do you want people to call you?"></ion-input>
-        </ion-item>
-        <ion-row>
-            <ion-col width-30>
+                <div *ngIf="signupForm.controls['name'].touched">
+                    <div *ngIf="!signupForm.controls['name'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Full name must have (6 to 25) letters</strong>
+                    </div>
+                </div>
                 <ion-item>
-                    <ion-label>Gender</ion-label>
-                    <ion-list radio-group>
-                        <ion-item>
-                            <ion-label>Friends</ion-label>
-                            <ion-radio value="friends" checked></ion-radio>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Family</ion-label>
-                            <ion-radio value="family"></ion-radio>
-                        </ion-item>
-                        <ion-item>
-                        </ion-item>
-                    </ion-list>
+                    <ion-label stacked>Date Of Birth</ion-label>
+                    <ion-input placeholder="Date of birth" (click)="onDateClick($event)" ></ion-input>
+
                 </ion-item>
-            </ion-col>
-            <ion-col width-30>
+                <ion-item>
+                    <ion-label stacked>Bio</ion-label>
+                    <ion-input placeholder="What do you want people to call you?" [formControl]="signupForm.controls['bio']" type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['bio'].touched">
+                    <div *ngIf="!signupForm.controls['bio'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Please enter your bio (upto 255 char) </strong>
+                    </div>
+                </div>
+
+                <ion-item>
+                    <ion-label stacked>Gender</ion-label>
+                    <ion-select>
+                        <ion-option value="f">Female</ion-option>
+                        <ion-option value="m">Male</ion-option>
+                    </ion-select>
+                </ion-item>
+
                 <ion-item>
                     <ion-label stacked>Height</ion-label>
-                    I AM
-                    <ion-input></ion-input>Tall.
+                    <ion-input [formControl]="signupForm.controls['height']" type="number" placeholder="Enter your height"></ion-input>
                 </ion-item>
-            </ion-col>
-            <ion-col width-30>
+                <div *ngIf="signupForm.controls['height'].touched">
+                    <div *ngIf="!signupForm.controls['height'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Enter your height </strong>
+                    </div>
+                </div>
                 <ion-item>
                     <ion-label stacked>Weight</ion-label>
-                    <span>I Weigh</span>
-                    <ion-input></ion-input>Pounds.
+                    <ion-input placeholder="Enter your weight (pounds)" [formControl]="signupForm.controls['weight']" type="number"></ion-input>
                 </ion-item>
+                <div *ngIf="signupForm.controls['weight'].touched">
+                    <div *ngIf="!signupForm.controls['weight'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Enter your weight </strong>
+                    </div>
+                </div>
+            </ion-card-content>
+
+        </ion-card>
+        <ion-item>
+            <h4>Industry credentials</h4>
+        </ion-item>
+        <ion-card>
+            <ion-card-content>
+                <ion-item>
+                    <ion-label stacked>Ussa Level</ion-label>
+                    <ion-select>
+                        <ion-option value="1">1</ion-option>
+                        <ion-option value="2">2</ion-option>
+                        <ion-option value="3">3</ion-option>
+                        <ion-option value="4">4</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>Years of instruction</ion-label>
+                    <ion-input placeholder="What are you certified in?" [formControl]="signupForm.controls['yoi']" type="number"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['yoi'].touched">
+                    <div *ngIf="!signupForm.controls['yoi'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Enter your years of instruction(upto 3 char) </strong>
+                    </div>
+                </div>
+                <ion-item>
+                    <ion-label stacked>Certifications</ion-label>
+                    <ion-input placeholder="What are you certified in?" [formControl]="signupForm.controls['certification']" type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['certification'].touched">
+                    <div *ngIf="!signupForm.controls['certification'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Enter your certifications </strong>
+                    </div>
+                </div>
+                <ion-item>
+                    <ion-label stacked>Areas of Experties</ion-label>
+                    <ion-input placeholder="What are you expert in?" [formControl]="signupForm.controls['areaexpertise']" type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['areaexpertise'].touched">
+                    <div *ngIf="!signupForm.controls['areaexpertise'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Enter your areas of Experties </strong>
+                    </div>
+                </div>
+                <ion-item>
+                    <ion-label stacked>Equipment Used</ion-label>
+                    <ion-input placeholder="What gear do you use?" [formControl]="signupForm.controls['equipused']" type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="signupForm.controls['equipused'].touched">
+                    <div *ngIf="!signupForm.controls['equipused'].valid" class="alert-danger">
+                        <strong>&nbsp;&nbsp;Enter your equipment Used </strong>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        </div>
+       
+
+        <ion-row>
+           <!--  <ion-col width-50>
+                <button ion-button block (click)="close()">Cancel</button>
+            </ion-col> -->
+
+            <ion-col width-50>
+                <button [disabled]="!signupForm.valid" ion-button block type="submit">
+                            Create Profile
+                          </button>
             </ion-col>
         </ion-row>
-
-
-        <ion-item>
-            <ion-label stacked>Certifications</ion-label>
-            <ion-input placeholder="What are you certified in?"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label stacked>Areas of Experties</ion-label>
-            <ion-input placeholder="What are you expert in?"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label stacked>Equipment Used</ion-label>
-            <ion-input placeholder="What gear do you use?"></ion-input>
-        </ion-item>
-    </ion-grid>
-    <ion-row>
-        <ion-col width-50>
-            <button ion-button block>Cancel</button>
-        </ion-col>
-        <ion-col width-50>
-            <button ion-button block>Create Profile</button>
-        </ion-col>
-    </ion-row>
-
+    </form>
 
 
 

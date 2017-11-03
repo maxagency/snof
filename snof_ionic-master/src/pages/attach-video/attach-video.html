@@ -1,0 +1,88 @@
+<ion-header class="attach-video-header">
+  <ion-navbar color="dark">
+    <ion-title>
+      Attach Video To ...
+    </ion-title>
+
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content class="grey-bg" padding>
+
+  <ion-list class="athlete-select" radio-group [(ngModel)]="selectedAthlete">
+
+    <ion-item class="list-header">
+      Not Completed
+    </ion-item>
+    <ion-item *ngFor="let athlete of athletes_notCompleted" [ngClass]="{'selected-athlete' : (isSelectedAthlete(athlete))}" (click)="toggleSelectedAthlete(athlete)">
+      <!--ion-radio value="{{athlete.id}}"></ion-radio-->
+      <ion-label>
+        <div class="left"><img class="thumbnail large" [src]="athlete.user.thumbBase64"/></div>
+        <div class="center">{{athlete.user.firstName}} {{athlete.user.lastName}}</div>
+        <div class="right">
+          {{athlete.numVideos}} <ion-icon name="videocam"></ion-icon>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item class="list-header">
+      Completed
+    </ion-item>
+    <ion-item *ngFor="let athlete of athletes_completed" [ngClass]="{'selected-athlete' : (isSelectedAthlete(athlete))}" (click)="toggleSelectedAthlete(athlete)">
+      <!--ion-radio value="{{athlete.id}}"></ion-radio-->
+      <ion-label>
+        <div class="left"><img class="thumbnail large" [src]="athlete.user.thumbBase64"/></div>
+        <div class="center">{{athlete.user.firstName}} {{athlete.user.lastName}}</div>
+        <div class="right">
+          {{athlete.numVideos}} <ion-icon name="videocam"></ion-icon>
+        </div>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-grid class="bottom-grid">
+
+    <ion-row class="evaluate-now-row">
+
+      <ion-col col-11 class="evaluate-col">
+        <span>Evaluate Now</span>
+      </ion-col>
+
+      <ion-col col-1 class="check-col">
+        <ion-checkbox large color="balanced" [(ngModel)]="evaluateNow"></ion-checkbox>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row class="attach-button-row" (click)="attachVideo()">
+
+      <ion-col col-1>
+          <button ion-button full clear></button>
+      </ion-col>
+      
+      <ion-col col-10 class="attach-button-text-div">
+        <button ion-button full clear>
+            <span *ngIf="selectedAthlete === null">ATTACH</span>
+            <span *ngIf="selectedAthlete !== null">ATTACH TO {{(selectedAthlete.user.firstName).toUpperCase()}}</span>
+        </button>
+      </ion-col>
+
+      <ion-col col-1 class="attach-button-arrow-div">
+        <button ion-button full clear>
+            <ion-icon name="md-arrow-forward"></ion-icon>
+        </button>
+        
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-footer>

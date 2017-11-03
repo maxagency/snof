@@ -1,0 +1,218 @@
+
+
+page-drill-detail{
+  .toolbar-title{
+    padding-top: 20px;
+  }
+  ion-navbar.toolbar{
+      padding-top: 40px;
+    }
+}
+.select-cell-row {
+  //height: 29px;
+  //width: 32px;
+  padding: 0px auto;
+  margin: 0px auto;
+}
+
+.select-cell {
+  height: 29px;
+  width: 32px;
+  padding: 0px 0px 0px 0px !important;
+  margin: 0px 0px 0px 0px !important;
+  font-size: 24px; //line-height: 29px;
+  text-align: center;
+  height: 60px;
+  width: 142.22px;
+}
+
+.inactive {
+  border: 2px solid #CFCFCF;
+  background-color: rgba(155, 155, 155, 0.2);
+}
+
+/*.active {
+  background-color: #4A4A4A;
+  color: #FFFFFF;
+} */
+
+.black-div {
+  background: black !important;
+  margin: 0px auto;
+  padding: 0px auto;
+}
+
+.white-text {
+  color: white;
+}
+
+.purple-heading {
+  //height: 29px;
+  //width: 131px;
+  color: #2D2F89;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 29px;
+}
+
+.black-subheading {
+  /*height: 27px; //width: 244px;
+  color: #1D1D1E; //font-family: Montserrat;
+  font-size: 22px;
+  line-height: 27px; */
+
+  height: 27px;
+  width: 81px;
+  color: #5D5D5D;
+  //font-family: Montserrat;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.large-divider {
+  box-sizing: border-box;
+  height: 2px;
+  width: 700px;
+  border: 3px solid #2D2F89;
+}
+
+.medium-divider {
+  box-sizing: border-box;
+  height: 2px;
+  width: 399.31px;
+  border: 3px solid #2D2F89;
+}
+
+.small-divider {
+  box-sizing: border-box;
+  height: 2px;
+  border: 3px solid #2D2F89;
+  width: 224px;
+}
+
+.bolded {
+  font-weight: bold;
+}
+
+.cancel-button {
+  height: 27px;
+  width: 78px;
+  color: #FFFFFF;
+  font-family: Montserrat;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.snf-title {
+  /* height: 29px !important;
+  width: 233px;
+  color: #FFFFFF; //font-family: Montserrat;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  line-height: 29px !important;
+  text-align: center;
+  vertical-align: center; */
+}
+
+.save-drill-button {
+  height: 27px !important;
+  width: 55px;
+  color: #FFFFFF; //font-family: Montserrat;
+  font-size: 22px !important;
+  line-height: 27px !important;
+  text-align: right;
+}
+
+.drill-person {
+  margin: 5px 0px 4px 20px;
+  height: 47px;
+  color: #FFFFFF;
+  font-size: 38px;
+  font-weight: bold;
+  line-height: 47px;
+}
+
+.drill-name {
+  margin: 5px 0px 4px 20px;
+  height: 29px;
+  color: #FFFFFF;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.drill-ref-button-text {
+  height: 20px;
+  width: 225px;
+  color: #FF5752; // font-family: Montserrat;
+  font-size: 17px;
+  line-height: 20px; //margin-left: 0px;
+  //padding-left: 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+.drill-ref-button {
+  padding: 0px auto; //margin-left: 2px;
+  margin: 3px 0px 0px -10px;
+}
+
+.user-block {
+  height: 180px !important;
+  background: black;
+  
+}
+
+.thumbnail-left {
+  margin: -20px -50px 0px -38px;
+}
+
+.snf-nav {
+  height: 60px;
+}
+
+.video-cell {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+.video-section {
+  height: 180px;
+  width: 250px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  video {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@mixin active {
+  color: white;
+  font-weight: bold;
+  border: 2px solid #CFCFCF;
+}
+
+.active-yellow {
+  @include active;
+  background-color: #D39E00;
+}
+
+.active-burnt-orange {
+  @include active;
+  background-color: #B76847
+}
+
+.active-steel-blue {
+  @include active;
+  background-color: #829197
+}
+
+.active-white {
+  color: gray;
+  font-weight: bold;
+  background-color: #FFFFFF;
+  border: 2px solid #CFCFCF;
+
+}
+

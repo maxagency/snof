@@ -1,0 +1,22 @@
+[
+	{
+		"id": "video-1",
+		"fileName": "/path/to/video1",
+		"thumb": null
+	},
+	{
+		"id": "video-2",
+		"fileName": "/path/to/video2",
+		"thumb": null
+	},
+	{
+		"id": "video-3",
+		"fileName": "/path/to/video3",
+		"thumb": null
+	},
+	{
+		"id": "video-4",
+		"fileName": "/path/to/video4",
+		"thumb": null
+	}
+]

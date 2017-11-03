@@ -27,7 +27,7 @@ export class RestApiProvider {
   public STUB_MODE;
 
   private userId;  // currently logged in user
-  private token;    
+  private token;
   private user;
   private deviceId; // UUID of this device
 
@@ -35,15 +35,15 @@ export class RestApiProvider {
   private TIME_BETWEEN_REAUTH;
 
   constructor(public platform: Platform,
-              private storage: Storage,
-              private sqlite: SQLite,
-              private device: Device,
-              public http: Http) {
+    private storage: Storage,
+    private sqlite: SQLite,
+    private device: Device,
+    public http: Http) {
 
     this.http = http;
     //this.host = 'http://localhost:8081/';
     this.host = 'https://snofolioresort.appspot.com/';
-    
+
     this.deviceId = this.device.uuid;
 
     // re-authenticate every N seconds
@@ -58,21 +58,19 @@ export class RestApiProvider {
   }
 
 
-  getUserId()
-  {
+  getUserId() {
     return this.userId;
   }
 
-  isAuthenticated()
-  {
+  isAuthenticated() {
 
     // not authenticated
-    if(!this.userId) return false;
+    if (!this.userId) return false;
 
     // internal timeout (should occur before server timeout)
     let curTime = new Date();
-    let secsBetween = curTime.getTime()/1000 - this.timeOfLastAuthentication.getTime()/1000;
-    if(secsBetween > this.TIME_BETWEEN_REAUTH){
+    let secsBetween = curTime.getTime() / 1000 - this.timeOfLastAuthentication.getTime() / 1000;
+    if (secsBetween > this.TIME_BETWEEN_REAUTH) {
       return false;
     }
 
@@ -81,11 +79,11 @@ export class RestApiProvider {
 
   }
 
-  authenticateBeforeRequest(skipPreAuth=false){
+  authenticateBeforeRequest(skipPreAuth = false) {
 
     return new Promise(resolve => {
 
-      if(skipPreAuth || this.isAuthenticated()){
+      if (skipPreAuth || this.isAuthenticated()) {
         resolve(true);
         return;
       }
@@ -93,10 +91,10 @@ export class RestApiProvider {
       this.attemptAutoLogin().then(data => {
 
         let res: any = data;
-        if(res.success){
+        if (res.success) {
           resolve(true);
         }
-        else{
+        else {
           resolve(false);
         }
 
@@ -106,23 +104,27 @@ export class RestApiProvider {
 
   }
 
-  attemptAutoLogin(){
+  attemptAutoLogin() {
 
     return new Promise(resolve => {
+
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!", resolve);
       this.storage.get('userCache').then(res => {
 
         let user: any = res;
 
-        if(!user){
+        if (!user) {
           // No User ONLINE or OFFLINE
           resolve({
             success: false,
             message: "Auto login not available"
           });
         }
-        else if(user && this.isOnline()){
+        else if (user && this.isOnline()) {
           // Has User ONLINE - re-submit login
           this.loginUser(user).then(data => {
+
+            console.log("Loginnnnnnnnnnnnnn ", data);
 
             resolve({
               success: true,
@@ -130,14 +132,14 @@ export class RestApiProvider {
             });
           })
         }
-        else if(user){
+        else if (user) {
           // Has User OFFLINE
           // todo - check if Offline session timeout exceeded
           resolve({
-              success: true,
-              message: "Successfully Logged in Offline"
-            });
-          
+            success: true,
+            message: "Successfully Logged in Offline"
+          });
+
         }
 
       });
@@ -179,7 +181,7 @@ export class RestApiProvider {
     Documentation
     
   */
-  loginUser(params){
+  loginUser(params) {
 
     let uri = 'loginUser';
     let body = {
@@ -196,7 +198,7 @@ export class RestApiProvider {
       this._post_request(uri, body, true).then(res => {
 
         let data: any = res;
-        if(data.user){
+        if (data.user) {
 
           this.userId = data.user.id;
           this.user = data.user;
@@ -214,7 +216,7 @@ export class RestApiProvider {
           });
 
         }
-        else{
+        else {
           reject({
             success: false,
             message: data.error
@@ -223,9 +225,9 @@ export class RestApiProvider {
 
       }, err => {
         reject({
-            success: false,
-            message: err
-          });
+          success: false,
+          message: err
+        });
       });
 
     });
@@ -262,33 +264,33 @@ export class RestApiProvider {
                                                                   }
 
   */
-  queryUsers(params){
+  queryUsers(params) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       // poc_data/catalogs-query.json
       let uri = 'user-query.json';
       return this._stub_request_json(uri);
     }
 
-    
+
     let body: any = {
     };
 
-    if(params.limit){
+    if (params.limit) {
       body.limit = params.limit.results,
-      body.offset = params.limit.offset
+        body.offset = params.limit.offset
     }
 
-    if(params.where){
+    if (params.where) {
       body.where = params.where;
     }
-    
-    if(params.orderBy){
+
+    if (params.orderBy) {
       body.orderBy = params.orderBy
     }
 
-    body.resolveReferences = (params.resolveReferences)? params.resolveReferences: null;
-    
+    body.resolveReferences = (params.resolveReferences) ? params.resolveReferences : null;
+
     let uri = 'queryUsers';
     return this._post_request(uri, body, true);
 
@@ -314,9 +316,9 @@ export class RestApiProvider {
 
   */
 
-  createUser(userData){
+  createUser(userData) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       console.warn('No STUB for restApi.createUser(userData)');
       return;
     }
@@ -335,9 +337,9 @@ export class RestApiProvider {
     });
   */
 
-  getUser(id, resolveReferences=null){
+  getUser(id, resolveReferences = null) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       console.warn('No STUB for restApi.getUser(id)');
       return;
     }
@@ -359,9 +361,9 @@ export class RestApiProvider {
       console.log(res);
     });
   */
-  getUsers(ids, resolveReferences=null){
+  getUsers(ids, resolveReferences = null) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       console.warn('No STUB for restApi.getUsers(userData)');
       return;
     }
@@ -393,9 +395,9 @@ export class RestApiProvider {
     })
   */
 
-  updateUser(userId, userData){
+  updateUser(userId, userData) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       console.warn('No STUB for restApi.updateUser(userId, userData)');
       return;
     }
@@ -415,10 +417,10 @@ export class RestApiProvider {
   //=======================================================================================
 
 
-  getSampleObjects(objectType, params){
+  getSampleObjects(objectType, params) {
 
     // poc_data/catalogs-query.json
-    let uri = objectType+'-query.json';
+    let uri = objectType + '-query.json';
     return this._stub_request_json(uri);
 
   }
@@ -452,33 +454,33 @@ export class RestApiProvider {
 
                                                                   }
   */
-  queryObjects(objectType, params){
+  queryObjects(objectType, params) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       // poc_data/catalogs-query.json
-      let uri = objectType+'-query.json';
+      let uri = objectType + '-query.json';
       return this._stub_request_json(uri);
     }
 
-    
+
     let body: any = {
       'objectType': objectType,
       //'where': 'id=3',
       //'orderBy': ['timeUpdated', 'desc'],
     };
 
-    body.resolveReferences = (params.resolveReferences)? params.resolveReferences: null;
+    body.resolveReferences = (params.resolveReferences) ? params.resolveReferences : null;
 
-    if(params.limit){
+    if (params.limit) {
       body.limit = params.limit.results,
-      body.offset = params.limit.offset
+        body.offset = params.limit.offset
     }
 
-    if(params.where){
+    if (params.where) {
       body.where = params.where;
     }
-    
-    if(params.orderBy){
+
+    if (params.orderBy) {
       body.orderBy = params.orderBy
     }
 
@@ -489,9 +491,9 @@ export class RestApiProvider {
 
   }
 
-  createObject(objectType, objectData){
+  createObject(objectType, objectData) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       console.warn('No STUB for restApi.createObject(ObjectType, objectData)');
       return;
     }
@@ -524,9 +526,9 @@ export class RestApiProvider {
                                                                   }
   */
 
-  getObject(objectType, id, resolveReferences=null){
+  getObject(objectType, id, resolveReferences = null) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       console.warn('No STUB for restApi.getObject(ObjectType, id)');
       return;
     }
@@ -542,9 +544,9 @@ export class RestApiProvider {
 
   }
 
-  getObjects(objectType, ids, resolveReferences=null){
+  getObjects(objectType, ids, resolveReferences = null) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       console.warn('No STUB for restApi.getObject(ObjectType, objectData)');
       return;
     }
@@ -559,9 +561,9 @@ export class RestApiProvider {
 
   }
 
-  updateObject(objectType, objectId, objectData){
+  updateObject(objectType, objectId, objectData) {
 
-    if(this.STUB_MODE){
+    if (this.STUB_MODE) {
       console.warn('No STUB for restApi.updateObject(id, objectData)');
       return;
     }
@@ -570,6 +572,80 @@ export class RestApiProvider {
     let body = objectData;
     body.objectType = objectType;
     body.id = objectId;
+    return this._post_request(uri, body, true);
+  }
+
+  //
+  //
+  // TRANSACTIONAL EMAILS
+  //
+  //
+
+
+  /** 
+
+    @params {
+      userId: 'user-1',                         // user to receive message
+      templateId: 'SAMPLE',                     // message template ID
+      forceRecipient: 'tomp@appnovation.com',    // for testing - routes email to specified address, and nobody else
+      vars: {
+        // key-value pairs to replace in message
+        // e.g. "Hi, this is a test message id: SAMPLE\n foo: {{foo}}\n bar: {{bar}}"
+        foo: 'ABC',
+        bar: '123'
+      }
+    }
+
+    EXAMPLES
+    
+    // SAMPLE
+    var params: any = {
+      userId: 'user-1',
+      templateId: 'SAMPLE',
+      forceRecipient: 'tom@railwaylabs.com',
+      vars: {
+        // key-value pairs to replace in message
+        // e.g. "Hi, this is a test message id: SAMPLE\n foo: {{foo}}\n bar: {{bar}}"
+        foo: 'ABC',
+        bar: '123',
+      }
+    }
+
+    // RESET PASSWORD
+    var params: any = {
+      userId: 'user-1',
+      templateId: 'RESET_PASSWORD',
+      forceRecipient: 'tom@railwaylabs.com',
+      vars: {
+        resetPasswordLink: 'http://www.google.com'
+      }
+    }
+
+    // CONFIRM ACCOUNT
+    var params: any = {
+      userId: 'user-1',
+      templateId: 'CONFIRM_ACCOUNT',
+      forceRecipient: 'tom@railwaylabs.com',
+      vars: {
+        confirmAccountLink: 'http://www.google.com'
+      }
+    }
+    
+  */
+  sendEmailToUser(params) {
+
+    if (this.STUB_MODE) {
+      console.warn('No STUB for restApi.updateObject(id, objectData)');
+      return;
+    }
+
+    let uri = 'sendEmailToUser';
+    let body = {
+      userId: params.userId,
+      templateId: params.templateId,
+      forceRecipient: params.forceRecipient,
+      vars: params.vars
+    };
     return this._post_request(uri, body, true);
   }
 
@@ -583,7 +659,7 @@ export class RestApiProvider {
   //
   //
 
-  getRemoteModifiedObjects(params){
+  getRemoteModifiedObjects(params) {
 
     let uri = 'getRemoteModifiedObjects';
     let body = {
@@ -598,17 +674,17 @@ export class RestApiProvider {
   //
 
   //getEvents(){
-//
+  //
   //  if(this.STUB_MODE){
   //    // poc_data/catalogs-query.json
   //    let uri = 'events-query.json';
   //    return this._stub_request_json(uri);
   //  }
-//
+  //
   //  let uri = 'mobile/objects?search';
   //  return this._get_request(uri);
-//
-//
+  //
+  //
   //}
 
 
@@ -621,7 +697,7 @@ export class RestApiProvider {
   //
   //=======================================================================================
 
-  _post_request(uri, body, skipPreAuth=false){
+  _post_request(uri, body, skipPreAuth = false) {
 
     let url = this.host + uri;
 
@@ -629,12 +705,12 @@ export class RestApiProvider {
 
       this.authenticateBeforeRequest(skipPreAuth).then((dat: any) => {
 
-        if(!dat){
+        if (!dat) {
           resolve({
-                  success: false,
-                  message: "Authentication Required",
-                  errors: "Auth",
-                });
+            success: false,
+            message: "Authentication Required",
+            errors: "Auth",
+          });
           return;
         }
 
@@ -647,18 +723,18 @@ export class RestApiProvider {
           //.map(res => res.json())
           .subscribe(res => {
             let res_json: any = res.json();
-            if(res_json.success){
+            if (res_json.success) {
               resolve(res_json.body);
             }
-            else{
+            else {
               reject(res_json.error);
             }
           }, err => {
-            try{
+            try {
               let err_json: any = err.json();
               reject(err_json.error);
             }
-            catch(e){
+            catch (e) {
               reject(err);
             }
           });
@@ -670,24 +746,24 @@ export class RestApiProvider {
 
   }
 
-  _get_request(uri, skipPreAuth=false){
+  _get_request(uri, skipPreAuth = false) {
 
     let url = this.host + uri;
 
-    
+
     return new Promise((resolve, reject) => {
 
       this.authenticateBeforeRequest(skipPreAuth).then((res: any) => {
 
-        if(!res){
+        if (!res) {
           resolve({
-                  success: false,
-                  message: "Authentication Required",
-                  errors: "Auth",
-                });
+            success: false,
+            message: "Authentication Required",
+            errors: "Auth",
+          });
           return;
         }
-          
+
         let headers = new Headers();
         headers.append('Content-Type', 'application/json;charset=UTF-8');
         //let options = new RequestOptions({ headers: headers, withCredentials: true  });
@@ -698,29 +774,29 @@ export class RestApiProvider {
           .subscribe(res => {
 
             let res_json: any = res.json();
-            if(res_json.success){
+            if (res_json.success) {
               resolve(res_json.body);
             }
-            else{
+            else {
               reject(res_json.error);
             }
           }, err => {
-            try{
+            try {
               let err_json: any = err.json();
               reject(err_json.error);
             }
-            catch(e){
+            catch (e) {
               reject(err);
             }
           });
 
-        });
+      });
 
     });
 
   }
 
-  _put_request(uri, body){
+  _put_request(uri, body) {
 
     let url = this.host + uri;
 
@@ -728,50 +804,50 @@ export class RestApiProvider {
 
       this.authenticateBeforeRequest().then((res: any) => {
 
-        if(!res){
+        if (!res) {
           resolve({
-                  success: false,
-                  message: "Authentication Required",
-                  errors: "Auth",
-                });
+            success: false,
+            message: "Authentication Required",
+            errors: "Auth",
+          });
           return;
         }
-          
+
         let headers = new Headers();
         headers.append('Content-Type', 'application/json;charset=UTF-8');
-        let options = new RequestOptions({ headers: headers, withCredentials: true  });
+        let options = new RequestOptions({ headers: headers, withCredentials: true });
 
         this.http.put(url, body, options)
           .subscribe(res => {
 
             let res_json: any = res.json();
-            if(res_json.success){
+            if (res_json.success) {
               resolve(res_json.body);
             }
-            else{
+            else {
               reject(res_json.error);
             }
           }, err => {
-            try{
+            try {
               let err_json: any = err.json();
               reject(err_json.error);
             }
-            catch(e){
+            catch (e) {
               reject(err);
             }
           });
 
-        });
+      });
 
     });
 
   }
 
-  _stub_request_json(uri){
+  _stub_request_json(uri) {
 
     return new Promise((resolve, reject) => {
 
-      this.http.get('assets/poc_data/'+uri)
+      this.http.get('assets/poc_data/' + uri)
         .subscribe((res: any) => {
 
           //console.log(res);
@@ -783,18 +859,18 @@ export class RestApiProvider {
           resolve({
             success: false,
             message: JSON.parse(err._body)[0].context.error,
-            error: JSON.parse(err._body)[0] 
-          });    
+            error: JSON.parse(err._body)[0]
+          });
         });
     });
 
   }
 
-  _stub_request(uri){
+  _stub_request(uri) {
 
     return new Promise(resolve => {
 
-      this.http.get('assets/poc_data/'+uri)
+      this.http.get('assets/poc_data/' + uri)
         .subscribe((res: any) => {
 
           resolve(res);
@@ -805,11 +881,11 @@ export class RestApiProvider {
   }
 
 
-  isOnline(){
+  isOnline() {
     return true;
   }
 
-  error_notOnline(){
+  error_notOnline() {
 
     return new Promise(resolve => {
       resolve({
@@ -820,7 +896,7 @@ export class RestApiProvider {
 
   }
 
-  error_notAuthenticated(){
+  error_notAuthenticated() {
 
     return new Promise(resolve => {
       resolve({

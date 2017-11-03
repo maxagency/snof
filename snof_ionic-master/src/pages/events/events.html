@@ -1,0 +1,56 @@
+<ion-header class="calendar">
+
+  <ion-navbar>
+
+    <div class="calendar-header left">
+      <button ion-button clear (click)="doSelectToday($session)">Today</button>
+    </div>
+    <div class="calendar-header center">
+      <button class="inner-left" ion-button icon-only (click)="doSelectPrevMonth($session)">
+
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+
+      <span class="inner-center" ion-button clear>{{str_selectedMonth}}</span>
+
+      <button class="inner-right" ion-button icon-only (click)="doSelectNextMonth($session)">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+    </div>
+    <div class="calendar-header right">
+      <button class="primary-round inner-right" ion-button icon-only (click)="goToCreateTrainingSession()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+    </div>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="events-calendar">
+  <div class="overlay"></div>
+  <div class="bg-img"></div>
+
+  <div class="calendar">
+    <ion-row class="calendar-header">
+      <ion-col>S</ion-col>
+      <ion-col>M</ion-col>
+      <ion-col>T</ion-col>
+      <ion-col>W</ion-col>
+      <ion-col>T</ion-col>
+      <ion-col>F</ion-col>
+      <ion-col>S</ion-col>
+    </ion-row>
+    <ion-row class="calendar-week" *ngFor="let week of monthTable; let w=index">
+      <ion-col *ngFor="let day of week; let d=index" class="calendar-day {{ day.css_isSelectedMonth }} {{ day.css_isToday }}">
+        <div class="day-of-month">{{ day.utc_date }}</div>
+        <div class="events" *ngIf="day.sessions && day.sessions.length>0">
+          <div class="event-container" *ngFor="let session of day.sessions; let i=index" (click)="goToTrainingSessionDetail(session)">
+            <div class="event {{session.phase.id}} {{session.css_color}}">{{ session.phase.name }}</div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-navbar class="training-session-nav" hideBackButton="true" color="dark">
+    <ion-title>
+      MARK ATHLETE AS ABSENT
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="grey-bg" padding>
+
+  <div class="user-thumb"><img class="thumbnail large" [src]="userThumb" /></div>
+  <ion-list inset class="grey-bg offset-thumbnail">
+
+    <ion-card padding class="top-block">
+
+      <!-- Selection for phase/program -->
+      <h2 class="person-name">{{name}}</h2>
+      <h2 class="sub-text">This athlete is absent due to:</h2>
+
+      <ion-grid>
+        <ion-row>
+
+          <ion-col col-3>
+            <div class="picture-option">
+              <ion-grid>
+
+                <ion-row class="picture-row">
+                  <ion-col>
+                    <img src="assets/images/Sickness.png@2x.png">
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <span>Sickness</span>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <ion-checkbox></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </ion-col>
+
+          <ion-col col-3>
+            <div class="picture-option">
+              <ion-grid>
+
+                <ion-row class="picture-row">
+                  <ion-col>
+                    <img src="assets/images/Holidays.png@1x.png">
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <span>Holidays</span>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <ion-checkbox></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </ion-col>
+
+          <ion-col col-3>
+            <div class="picture-option">
+              <ion-grid>
+
+                <ion-row class="picture-row">
+                  <ion-col>
+                    <img src="assets/images/Competition.png@1x.png">
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <span>Competition</span>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <ion-checkbox></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </ion-col>
+
+          <ion-col col-3>
+            <div class="picture-option">
+              <ion-grid>
+
+                <ion-row class="picture-row">
+                  <ion-col>
+                    <img src="assets/images/NoShow.png@1x.png">
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <span>No Show</span>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="picture-option-row">
+                  <ion-col>
+                    <ion-checkbox></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+
+      <div>
+        <div class="purple-heading">Additional Notes</div>
+        <div class="medium-divider"></div>
+        <div>
+          <ion-textarea rows="6" [(ngModel)]="overallComment" placeholder="Do you have anything else to add?"></ion-textarea>
+        </div>
+      </div>
+
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+
+      <ion-col>
+        <button ion-button full (click)="cancel()">
+           Cancel
+        </button>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button full danger color="danger" (click)="markAbsent()">
+           Mark Absent
+         </button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>

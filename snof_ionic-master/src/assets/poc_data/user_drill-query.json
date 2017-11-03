@@ -1,0 +1,20 @@
+[
+	{
+		"id": "athlete-1:drill-1",
+		"user_id": "athlete-1",
+		"drill_id": "drill-1",
+		"session_id": "session-1a",
+		"sequenceNumber": 1,
+		"video": "video-1",
+		"averageRating": 2,
+		"techniqueScore": 7,
+		"balanceScore": 4,
+		"rotaryScore": 3,
+		"edgingScore": 2,
+		"pressureControlScore": 1,
+		"snowQuality": "packedPowder",
+		"turnShape": "test",
+		"feedback": "Good job"
+
+	}
+]
